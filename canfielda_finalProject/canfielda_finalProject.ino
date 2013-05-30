@@ -174,13 +174,13 @@ void loop() {
     } else {
       prevCreditState = BUTTON_UP;
     } // end credit button
-Serial.print("inplay: ");
-Serial.println(game.inplay);
+
 
     switchState = bally.getDebRedgeRow(2);
     // right drop target d
     if (game.inplay && switchState & COL_0) {
       rightBankState = (rightBankState | COL_0);
+      
       addScore(500);
     }
 
@@ -423,6 +423,8 @@ int getMultiplier() {
 }
 
 void incrementMultiplier() {
+  
+  // chimes the bell
   bally.fireSolenoid(8, TRUE);
   
   switch (getMultiplier()) {
